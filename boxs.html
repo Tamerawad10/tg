@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول / إنشاء حساب</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74b9ff, #a29bfe);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: white;
+            width: 900px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            display: flex;
+            overflow: hidden;
+        }
+
+        .form-container {
+            width: 50%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #2d3436;
+            text-align: center;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .form-container input:focus {
+            border-color: #6c5ce7;
+            outline: none;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: #0984e3;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container button:hover {
+            background-color: #74b9ff;
+        }
+
+        .switch-container {
+            width: 50%;
+            background-color: #6c5ce7;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 40px;
+            transition: all 0.5s ease;
+        }
+
+        .switch-container h2 {
+            margin-bottom: 10px;
+        }
+
+        .switch-container p {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .switch-container button {
+            background-color: white;
+            color: #6c5ce7;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .switch-container button:hover {
+            background-color: #dfe6e9;
+        }
+
+        /* التحويل بين النماذج */
+        .container.sign-up-mode .switch-container {
+            transform: translateX(-100%);
+        }
+
+        .container.sign-up-mode .form-container {
+            transform: translateX(100%);
+        }
+
+        .form-container, .switch-container {
+            transition: transform 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="container">
+        <!-- نموذج تسجيل الدخول -->
+        <div class="form-container" id="loginForm">
+            <h2>تسجيل الدخول</h2>
+            <form>
+                <input type="email" placeholder="البريد الإلكتروني" required>
+                <input type="password" placeholder="كلمة المرور" required>
+                <button type="submit">تسجيل الدخول</button>
+            </form>
+        </div>
+
+        <!-- نموذج إنشاء حساب -->
+        <div class="form-container" id="signUpForm" style="transform: translateX(100%);">
+            <h2>إنشاء حساب</h2>
+            <form>
+                <input type="text" placeholder="الاسم الكامل" required>
+                <input type="email" placeholder="البريد الإلكتروني" required>
+                <input type="password" placeholder="كلمة المرور" required>
+                <input type="password" placeholder="تأكيد كلمة المرور" required>
+                <button type="submit">إنشاء حساب</button>
+            </form>
+        </div>
+
+        <!-- قسم التبديل بين النماذج -->
+        <div class="switch-container">
+            <h2>مرحبًا بك!</h2>
+            <p>هل لديك حساب بالفعل؟</p>
+            <button onclick="toggleForms()">تسجيل الدخول</button>
+            <p>أو</p>
+            <button onclick="toggleForms()">إنشاء حساب جديد</button>
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById('container');
+
+        function toggleForms() {
+            container.classList.toggle('sign-up-mode');
+        }
+    </script>
+
+</body>
+</html>
